@@ -27,4 +27,4 @@ jobs:
       run: |
         echo "🚀 Starting Discord Server Cloner Bot..."
         echo "🤖 Bot will now listen for !clone commands on Discord"
-        node index.js
+        node index.js || cat npm-debug.log
