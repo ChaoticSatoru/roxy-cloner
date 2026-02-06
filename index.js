@@ -1,6 +1,17 @@
 require('dotenv').config();
-const { Client } = require('discord.js-selfbot-v13');
-const https = require('https');
+const { Client, Intents } = require('discord.js');
+
+const client = new Client({
+  intents: [
+    Intents.FLAGS.GUILDS,                  // needed for guild fetching/roles/channels
+    Intents.FLAGS.GUILD_MESSAGES,          // needed for messages in guilds
+    Intents.FLAGS.DIRECT_MESSAGES,         // needed for DMs
+    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, // needed for emojis
+    Intents.FLAGS.GUILD_VOICE_STATES,      // needed if you clone voice channel properties
+    Intents.FLAGS.MESSAGE_CONTENT          // privileged: required to read message.content
+  ],
+  partials: ['CHANNEL', 'MESSAGE', 'REACTION'] // CHANNEL partial for DMs, MESSAGE/REACTION optional
+});
 
 const colors = {
     red: '\x1b[31m',
